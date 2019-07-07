@@ -12,4 +12,10 @@
   <body>
     <%= yield %>
   </body>
+
+  <footer>
+    <% if logged_in? %>
+      <%= link_to 'Log Out', logout_path, :method => :post %>
+    <% end %>
+  </footer>
 </html>
