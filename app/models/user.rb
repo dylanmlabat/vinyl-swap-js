@@ -3,4 +3,7 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true
   has_secure_password
   validates :password, presence: true
+
+  has_many :listings
+  has_many :albums, :through => :listings
 end
