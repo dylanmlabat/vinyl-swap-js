@@ -8,9 +8,9 @@ Rails.application.routes.draw do
   post '/logout', to: 'sessions#destroy'
 
   resources :users do
-    resources :listings, only: [:new, :show]
+    resources :listings, only: [:new, :edit, :show]
   end
   resources :albums
-  resources :listings, only: [:create]
+  resources :listings, only: [:create, :update]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

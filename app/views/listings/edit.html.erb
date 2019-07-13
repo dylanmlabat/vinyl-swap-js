@@ -1,0 +1,5 @@
+<h2><%= @listing.album.artist %> - <%= @listing.album.title %></h2>
+<%= form_for([@user, @listing]) do |f| %>
+  <%= render partial: 'form', locals: { :f => f} %>
+  <%= f.submit 'Edit Listing' %>
+<% end %>
