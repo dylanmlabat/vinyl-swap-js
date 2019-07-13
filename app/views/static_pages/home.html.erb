@@ -1,1 +1,12 @@
-<%= link_to 'Log In', login_path %> or <%= link_to 'Sign Up', signup_path %>
+<h1>Welcome to Vinyl Swap</h1>
+
+<% if !logged_in? %>
+  <br>If you already have an account, click here to <a href="/login">Log In</a>.
+  Otherwise, <a href="/signup">Sign Up</a> today.
+<% else %>
+  <h3>Recent Listings:</h3><br>
+  <% @recent_listings.each do |listing| %>
+    <%= listing.album.artist %> - <%= listing.album.title %><br>
+    <small><%= listing.condition %> - $<%= listing.price %></small><br><br>
+  <% end %>
+<% end %>

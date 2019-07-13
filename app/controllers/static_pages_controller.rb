@@ -1,7 +1,8 @@
 class StaticPagesController < ApplicationController
 
   def home
-    redirect_to current_user if current_user
+    @listings = Listing.all
+    @recent_listings = @listings.reverse[0..9]
   end
 
 end
