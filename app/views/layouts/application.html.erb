@@ -1,21 +1,22 @@
 <!DOCTYPE html>
-<html>
+<html class="no-js" lang="en">
   <head>
-    <title>Vinyl Swap</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
-    <%= yield %>
+    <div class="wrapper">
+      <%= yield %>
+      <footer class="branding">
+        <% if logged_in? %>
+          Currently logged in as: <%= link_to current_user.username %>
+          <%= button_to 'Log Out', logout_path, :method => :post %><br>
+        <% end %>
+        <p><small>&copy; 2019 <strong><a href="/">Vinyl Swap</a></strong></small>
+      </footer>
+    </div>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
   </body>
-
-  <footer>
-    <% if logged_in? %>
-      <p><%= link_to 'Log Out', logout_path, :method => :post %>
-    <% end %>
-  </footer>
 </html>
