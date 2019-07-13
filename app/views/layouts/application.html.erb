@@ -11,7 +11,7 @@
       <%= yield %>
       <footer class="branding">
         <% if logged_in? %>
-          Currently logged in as: <%= link_to current_user.username %>
+          Currently logged in as: <%= link_to current_user.username, user_path(current_user) %>
           <%= button_to 'Log Out', logout_path, :method => :post %><br>
         <% end %>
         <p><small>&copy; 2019 <strong><a href="/">Vinyl Swap</a></strong></small>
