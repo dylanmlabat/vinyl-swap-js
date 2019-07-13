@@ -1,0 +1,12 @@
+<% if @listings.empty? %>
+  None yet!
+<% else %>
+  <% @listings.each do |listing| %>
+    <% if @user %>
+      <%= listing.album.artist %> - <%= listing.album.title %><br>
+    <% elsif @album %>
+      Sold by: <%= listing.user.username %><br>
+    <% end %>
+    <small><%= listing.condition %> - $<%= listing.price %></small><br><br>
+  <% end %>
+<% end %>
