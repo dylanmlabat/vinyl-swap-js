@@ -1,0 +1,7 @@
+<%= form_for(@listing) do |f| %>
+  <%= f.label :condition %>:<br>
+  <%= f.text_field :condition %><br><br>
+  <%= f.label :price %>:<br>
+  <%= f.number_field :price %><br><br>
+  <%= f.submit 'Create Listing' %>
+<% end %>

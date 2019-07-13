@@ -6,11 +6,11 @@ class AlbumsController < ApplicationController
 
   def create
     @album = Album.new(album_params)
-     if @album.save
-       redirect_to @album
-     else
-       redirect_to new_album_path
-     end
+    if @album.save
+      redirect_to @album
+    else
+      redirect_to new_album_path
+    end
   end
 
   def show
