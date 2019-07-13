@@ -7,8 +7,10 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   post '/logout', to: 'sessions#destroy'
 
-  resources :users
+  resources :users do
+    resources :listings, only: [:new, :show]
+  end
   resources :albums
-  resources :listings
+  resources :listings, only: [:create]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

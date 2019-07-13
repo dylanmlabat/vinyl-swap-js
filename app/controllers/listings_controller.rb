@@ -8,9 +8,9 @@ class ListingsController < ApplicationController
     @listing = Listing.new(listing_params)
     @listing.user_id = current_user.id if current_user
     if @listing.save
-      redirect_to @listing
+      redirect_to user_listing_path(current_user, @listing)
     else
-      redirect_to new_listing_path
+      redirect_to new_user_listing_path(current_user, @listing)
     end
   end
 
