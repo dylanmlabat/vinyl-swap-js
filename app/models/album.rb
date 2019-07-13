@@ -6,4 +6,6 @@ class Album < ApplicationRecord
 
   has_many :listings
   has_many :users, :through => :listings
+
+  include ::AlbumConcerns
 end

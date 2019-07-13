@@ -1,4 +1,5 @@
 <%= form_for(@listing) do |f| %>
+  <%= collection_select(:listing, :album_id, Album.order(:artist), :id, :artist_with_title, prompt: 'Choose an album to list') %><br><br>
   <%= f.label :condition %>:<br>
   <%= f.text_field :condition %><br><br>
   <%= f.label :price %>:<br>
