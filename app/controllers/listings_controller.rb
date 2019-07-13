@@ -1,4 +1,6 @@
 class ListingsController < ApplicationController
+  include ListingsHelper
+  before_action :require_permission, only: [:edit]
 
   def new
     @listing = Listing.new
