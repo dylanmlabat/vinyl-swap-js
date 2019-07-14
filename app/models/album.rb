@@ -9,5 +9,5 @@ class Album < ApplicationRecord
 
   include ::AlbumConcerns
 
-  scope :by_artist, -> (artist) { where(artist: artist) }
+  scope :all_by_artist, -> (artist) { where(artist: artist) }
 end
