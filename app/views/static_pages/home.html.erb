@@ -4,9 +4,12 @@
   <br>If you already have an account, click here to <%= link_to 'Log In', login_path %>.
   Otherwise, <%= link_to 'Sign Up', signup_path %> today.
 <% else %>
-  <h3>Recent Listings:</h3><br>
+  <p><h2>Recent Listings:</h2>
   <% @recent_listings.each do |listing| %>
-    <%= listing.album.artist %> - <%= listing.album.title %><br>
-    <small><%= listing.condition %> - $<%= listing.price %></small><br><br>
+    <%= link_to user_listing_path(listing.user, listing) do %>
+      <%= listing.album.artist %> - <%= listing.album.title %><br>
+    <% end %>
+      <small>Sold by <%= link_to "#{listing.user.username}", user_path(listing.user) %></small><br>
+      <small><%= listing.condition %> - $<%= listing.price %></small><br><br>
   <% end %>
 <% end %>
