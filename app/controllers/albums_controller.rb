@@ -20,13 +20,10 @@ class AlbumsController < ApplicationController
 
   def artist
     @slug = params[:artist]
-    @albums = Album.all
-    @artist_albums = []
-    @albums.each do |album|
+    Album.all.each do |album|
       if @slug == album.artist.to_s.parameterize
         @artist = album.artist
-        @artist_albums = Album.by_artist(@artist).to_a
-        @artist_albums.sort_by!{ |a| [a.release_year, a.title] }
+        @artist_albums = Album.by_artist(@artist).to_a.sort_by!{ |a| [a.release_year, a.title] }
       end
     end
   end
