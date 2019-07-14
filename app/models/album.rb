@@ -8,4 +8,6 @@ class Album < ApplicationRecord
   has_many :users, :through => :listings
 
   include ::AlbumConcerns
+
+  scope :by_artist, -> (artist) { where(artist: artist) }
 end
