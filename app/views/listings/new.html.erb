@@ -1,5 +1,7 @@
 <%= form_for([@user, @listing]) do |f| %>
-  <%= collection_select(:listing, :album_id, Album.order(:artist), :id, :artist_with_title, prompt: 'Choose an album to list') %><br><br>
+  Choose an album from database to list:<br>
+  <%= collection_select(:listing, :album_id, Album.order(:artist), :id, :artist_with_title, prompt: true) %><br>
+  <small><%= link_to 'or add a new album to database first', new_album_path %></small><br><br>
   <%= render partial: 'form', locals: { :f => f} %>
   <%= f.submit 'Create Listing' %>
 <% end %>
