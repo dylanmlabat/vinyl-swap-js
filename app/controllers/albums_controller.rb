@@ -21,7 +21,7 @@ class AlbumsController < ApplicationController
   def artist
     @slug = params[:artist]
     Album.all.each do |album|
-      if @slug == album.artist.to_s.parameterize
+      if @slug == album.artist.parameterize
         @artist = album.artist
         @artist_albums = Album.by_artist(@artist).to_a.sort_by!{ |a| [a.release_year, a.title] }
       end
