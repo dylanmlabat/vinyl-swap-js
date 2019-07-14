@@ -1,7 +1,10 @@
 <h2><%= @listing.album.artist %> - <%= @listing.album.title %></h2>
-<h3>Sold by <%= @listing.user.username %></h3>
+<h3>Sold by <%= link_to "#{@listing.user.username}", user_path(@listing.user) %></h3>
 
 <br>Condition: <%= @listing.condition %><br>
 Price: $<%= @listing.price %><br><br>
 
-If you would like to purchase or request more information then please email <%= @listing.user.username %> at <%= @listing.user.email %>.
+If you would like to purchase this item or request more information then please email: <%= @listing.user.email %><br><br>
+
+<%= link_to 'Click here', album_path(@listing.album) %> to view other listings for this album.<br>
+<%= link_to 'Click here', "/albums/by_artist/#{@listing.album.artist.parameterize}" %> to view other albums by this artist.<br>
