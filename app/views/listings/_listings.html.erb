@@ -5,8 +5,8 @@
     <% if @user %>
       <%= listing.album.artist %> - <%= listing.album.title %><br>
     <% elsif @album %>
-      Sold by: <%= listing.user.username %><br>
+      <%= link_to "#{listing.condition} condition - $#{listing.price}", user_listing_path(listing.user, listing) %><br>
     <% end %>
-    <small><%= listing.condition %> - $<%= listing.price %></small><br><br>
+    <small>Sold by <%= link_to "#{listing.user.username}", user_path(listing.user) %></small><br><br>
   <% end %>
 <% end %>

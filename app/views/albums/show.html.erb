@@ -1,5 +1,8 @@
 <h2><%= @album.artist %> - <%= @album.title %></h2>
-Released in <%= @album.release_year %> ----- Genre: <%= @album.genre %><br><br>
+<b>Released:</b> <%= @album.release_year %><br>
+<b>Genre:</b> <%= @album.genre %><br><br>
 
-<h3>Copies for sale:</h3>
-<%= render 'listings/listings' %>
+<h3>Copies for sale:</h3><br>
+<%= render 'listings/listings' %><br>
+
+<%= button_to 'Return to Artist', "/albums/by_artist/#{@album.artist.parameterize}", method: :get %>
