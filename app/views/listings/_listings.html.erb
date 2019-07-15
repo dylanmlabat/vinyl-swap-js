@@ -1,12 +1,14 @@
 <% if @listings.empty? %>
-  None yet!
+  None yet!<br><br>
 <% else %>
   <% @listings.each do |listing| %>
     <% if @user %>
       <%= listing.album.artist %> - <%= listing.album.title %><br>
+      <small><%= listing.condition %> - $<%= listing.price %></small><br>
     <% elsif @album %>
       <%= link_to "#{listing.condition} condition - $#{listing.price}", user_listing_path(listing.user, listing) %><br>
+      <small>Sold by <%= link_to "#{listing.user.username}", user_path(listing.user) %></small><br>
     <% end %>
-    <small>Sold by <%= link_to "#{listing.user.username}", user_path(listing.user) %></small><br><br>
+    <br>
   <% end %>
 <% end %>
