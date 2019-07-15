@@ -2,6 +2,6 @@
 
 <p><h2>Albums:</h2>
 <p><% @artist_albums.each do |album| %>
-  <h3><%= album.title %></h3>
+  <h3><%= link_to album.title, album_path(album) %></h3>
   <small>Released: <%= album.release_year %></small><br><br>
 <% end %>
