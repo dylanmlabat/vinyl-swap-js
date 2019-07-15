@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   post '/logout', to: 'sessions#destroy'
 
   resources :users do
-    resources :listings, only: [:new, :edit, :show]
+    resources :listings, only: [:new, :edit, :show, :destroy]
   end
   resources :albums do
     get 'by_artist/:artist' => :artist, on: :collection

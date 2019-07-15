@@ -33,6 +33,14 @@ class ListingsController < ApplicationController
     @listing = Listing.find(params[:id])
   end
 
+  def destroy
+    @listing = Listing.find(params[:id])
+    if @listing.user == current_user
+      @listing.destroy
+      redirect_to user_path(current_user)
+    end
+  end
+
   private
 
   def listing_params
