@@ -23,7 +23,7 @@ class AlbumsController < ApplicationController
     Album.all.each do |album|
       if @slug == album.artist.parameterize
         @artist = album.artist
-        @artist_albums = Album.all_by_artist(@artist).to_a.sort_by!{ |a| [a.release_year, a.title] }
+        @artist_albums = Album.all_by_artist(@artist).discog_order
       end
     end
   end

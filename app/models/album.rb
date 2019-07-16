@@ -10,4 +10,5 @@ class Album < ApplicationRecord
   include ::AlbumConcerns
 
   scope :all_by_artist, -> (artist) { where(artist: artist) }
+  scope :discog_order, -> { order(:release_year, :asc, :title, :asc) }
 end
