@@ -1,15 +1,15 @@
-<h1>Welcome to Vinyl Swap</h1>
+<center><h1>Welcome to Vinyl Swap</h1></center>
 
 <% if !logged_in? %>
-  <br>If you already have an account, click here to <%= link_to 'Log In', login_path %>.
-  Otherwise, <%= link_to 'Sign Up', signup_path %> today.
+  <center><br><%= button_to 'Log In', login_path, method: :get %>
+  <%= button_to 'Sign Up', signup_path, method: :get %></center>
 <% else %>
   <p><h2>Recent Listings:</h2>
-  <% @recent_listings.each do |listing| %>
+  <div class="margin"><% @recent_listings.each do |listing| %>
     <%= link_to user_listing_path(listing.user, listing) do %>
       <%= listing.album.artist %> - <%= listing.album.title %><br>
     <% end %>
       <small>Sold by <%= link_to "#{listing.user.username}", user_path(listing.user) %></small><br>
       <small><%= listing.condition %> - $<%= listing.price %></small><br><br>
-  <% end %>
+  <% end %></div>
 <% end %>
