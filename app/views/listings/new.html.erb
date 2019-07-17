@@ -1,3 +1,5 @@
+<h2>Create New Listing</h2>
+
 <%= form_for([@user, @listing]) do |f| %>
   Choose an album from database to list:<br>
   <%= collection_select(:listing, :album_id, Album.order(:artist), :id, :artist_with_title, prompt: true) %><br>

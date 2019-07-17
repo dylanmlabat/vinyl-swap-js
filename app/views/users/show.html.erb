@@ -1,4 +1,12 @@
-<h1>Welcome, <%= @user.username %></h1>
+<% if @user == current_user %>
+  <center><h1>Welcome, <%= @user.username %></h1></center>
+<% else %>
+  <center><h1><%= @user.username %>'s Collection</h1></center>
+<% end %>
 
-<h3>Records for sale:</h3>
+<h2>Records for sale:</h2>
 <%= render 'listings/listings' %>
+
+<% if @user == current_user %>
+  <%= button_to 'Add Listing', new_user_listing_path(@user), method: :get %>
+<% end %>
