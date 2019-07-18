@@ -7,6 +7,12 @@
 
 <br><b>Condition: </b><%= @listing.condition %><br>
 <b>Price:</b> $<%= @listing.price %><br>
+<% if @listing.notes != nil %>
+  <b>Additional Notes:</b><br>
+  <div class="margin"><% @listing.notes.each do |note| %>
+   <%= note %><br>
+  <% end %></div>
+<% end %>
 
 <br>If you would like to purchase this item or have any questions then please email: <%= mail_to @listing.user.email %><br>
 

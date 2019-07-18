@@ -6,3 +6,8 @@
 <%= f.radio_button :condition, "Poor" %> <small>Poor</small><br><br>
 <%= f.label :price %>:<br>
 <%= f.number_field :price %><br><br>
+<%= f.label :notes, "Additional Notes:" %><br>
+<% Listing::NOTES.each do |note| %>
+  <%= f.check_box :notes, { multiple: true }, note, nil %>
+  <small> <%= note %></small>
+<% end %><br><br>

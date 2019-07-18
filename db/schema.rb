@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 2019_07_12_194017) do
   create_table "listings", force: :cascade do |t|
     t.string "condition"
     t.integer "price"
+    t.string "notes"
     t.integer "user_id"
     t.integer "album_id"
     t.datetime "created_at", null: false

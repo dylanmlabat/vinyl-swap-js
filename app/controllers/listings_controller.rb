@@ -44,7 +44,7 @@ class ListingsController < ApplicationController
   private
 
   def listing_params
-    params.require(:listing).permit(:condition, :price, :user_id, :album_id)
+    params.require(:listing).permit(:condition, :price, { notes: [] }, :user_id, :album_id)
   end
 
 end
