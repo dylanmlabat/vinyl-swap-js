@@ -8,5 +8,5 @@
 <%= render 'listings/listings' %>
 
 <% if @user == current_user %>
-  <%= button_to 'Add Listing', new_user_listing_path(@user), method: :get %>
+  <%= button_to 'Add New Listing', new_user_listing_path(@user), method: :get %>
 <% end %>

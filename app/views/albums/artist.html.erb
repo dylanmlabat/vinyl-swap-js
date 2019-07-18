@@ -5,3 +5,5 @@
   <h3><%= link_to album.title, album_path(album) %></h3>
   <small>Released: <%= album.release_year %></small><br><br>
 <% end %></div>
+
+<%= button_to 'Add New Album', new_album_path, method: :get %>

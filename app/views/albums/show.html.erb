@@ -3,6 +3,7 @@
 <b>Genre:</b> <%= @album.genre %><br><br>
 
 <h3>Copies for sale:</h3><br>
-<%= render 'listings/listings' %><br>
+<%= render 'listings/listings' %>
 
+<%= button_to 'Add New Listing', new_user_listing_path(current_user), method: :get %>
 <%= button_to 'Return to Artist', "/albums/by_artist/#{@album.artist.parameterize}", method: :get %>
