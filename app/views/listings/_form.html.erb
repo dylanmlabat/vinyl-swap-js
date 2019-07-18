@@ -1,4 +1,8 @@
 <%= f.label :condition %>:<br>
-<%= f.text_field :condition %><br><br>
+<%= f.radio_button :condition, "Mint" %> <small>Mint</small>
+<%= f.radio_button :condition, "Near Mint" %> <small>Near Mint</small>
+<%= f.radio_button :condition, "Very Good" %> <small>Very Good</small>
+<%= f.radio_button :condition, "Good" %> <small>Good</small>
+<%= f.radio_button :condition, "Poor" %> <small>Poor</small><br><br>
 <%= f.label :price %>:<br>
 <%= f.number_field :price %><br><br>

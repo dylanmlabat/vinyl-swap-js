@@ -1,14 +1,14 @@
 <h2><%= @listing.album.artist %> - <%= @listing.album.title %></h2>
 <h3>Sold by <%= link_to "#{@listing.user.username}", user_path(@listing.user) %></h3>
+<% if @listing.user == current_user %>
+  <%= button_to 'Edit Listing', edit_user_listing_path(current_user, @listing), method: :get %>
+  <%= button_to 'Delete Listing', user_listing_path(current_user, @listing), method: :delete %>
+<% end %>
 
-<br><b>Price:</b> $<%= @listing.price %><br>
-<%= @listing.condition %> condition<br>
+<br><b>Condition: </b><%= @listing.condition %><br>
+<b>Price:</b> $<%= @listing.price %><br>
 
 <br>If you would like to purchase this item or have any questions then please email: <%= mail_to @listing.user.email %><br>
-<% if @listing.user == current_user %>
-  <p><%= button_to 'Edit Listing', edit_user_listing_path(current_user, @listing), method: :get %>
-  <%= button_to 'Delete Listing', user_listing_path(current_user, @listing), method: :delete %>
-<% end %><br>
 
 <p><%= button_to 'Return to Album', album_path(@listing.album), method: :get %>
 <%= button_to 'Return to Artist', "/albums/by_artist/#{@listing.album.artist.parameterize}", method: :get %>
