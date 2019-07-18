@@ -8,5 +8,5 @@ class Listing < ApplicationRecord
   belongs_to :user
   belongs_to :album
 
-  NOTES = ['Sealed', '1st Pressing', 'Colored Vinyl', 'Picture Disk']
+  NOTES = ['Sealed', '1st Pressing', 'Colored Vinyl', 'Picture Disc', 'Limited Run', 'Promotional Release', 'Import']
 end

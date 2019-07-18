@@ -1,4 +1,4 @@
-<h2><%= @album.artist %> - <%= @album.title %></h2>
+<h2><%= link_to @album.artist, "/albums/by_artist/#{@album.artist.parameterize}" %> - <%= @album.title %></h2>
 <b>Released:</b> <%= @album.release_year %><br>
 <b>Genre:</b> <%= @album.genre %><br><br>
 
@@ -6,4 +6,3 @@
 <%= render 'listings/listings' %>
 
 <%= button_to 'Add New Listing', new_user_listing_path(current_user), method: :get %>
-<%= button_to 'Return to Artist', "/albums/by_artist/#{@album.artist.parameterize}", method: :get %>
