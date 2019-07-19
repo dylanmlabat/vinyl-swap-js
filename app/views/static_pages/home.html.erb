@@ -2,6 +2,7 @@
 
 <% if !logged_in? %>
   <center><br><%= button_to 'Log In', login_path, method: :get %>
+  <%= button_to 'Log In via Facebook', '/auth/facebook', method: :get %>
   <%= button_to 'Sign Up', signup_path, method: :get %></center>
 <% else %>
   <p><h2>Recent Listings:</h2>
