@@ -1,9 +1,18 @@
 <%= form_for(@user) do |f| %>
-  <%= f.label :username %>:<br>
-  <%= f.text_field :username %><br><br>
-  <%= f.label :email %>:<br>
-  <%= f.text_field :email %><br><br>
-  <%= f.label :password %>:<br>
-  <%= f.password_field :password %><br><br>
+  <%= f.label :username, 'Username:' %><br>
+  <%= f.text_field :username %>
+  <% @user.errors[:username].each do |error| %>
+    <div id='error_explanation'><%= inline_errors(@user, :username) %></div>
+  <% end %><br><br>
+  <%= f.label :email, 'Email:' %><br>
+  <%= f.text_field :email %>
+  <% @user.errors[:email].each do |error| %>
+    <div id='error_explanation'><%= inline_errors(@user, :email) %></div>
+  <% end %><br><br>
+  <%= f.label :password, 'Password:' %><br>
+  <%= f.password_field :password %>
+  <% @user.errors[:password].each do |error| %>
+    <div id='error_explanation'><%= inline_errors(@user, :password) %></div>
+  <% end %><br><br>
   <%= f.submit 'Create Account' %>
 <% end %>
