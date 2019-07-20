@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   get '/auth/facebook/callback' => 'sessions#fbcreate'
   post '/logout', to: 'sessions#destroy'
+  get '/search', to: 'application#search'
+  post '/search', to: 'application#result'
 
   resources :users do
     resources :listings, only: [:new, :edit, :show, :destroy]

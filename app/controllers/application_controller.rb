@@ -3,6 +3,19 @@ class ApplicationController < ActionController::Base
   before_action :require_login, only: [:show, :edit]
   helper_method :logged_in?, :current_user
 
+  def search
+  end
+
+  def result
+    @artist = params[:search]
+    if Album.all.group_by(&:artist).include?(@artist)
+      redirect_to "/albums/by_artist/#{@artist.parameterize}"
+    else
+      flash[:error] = "Artist not found"
+      redirect_back(fallback_location: root_path)
+    end
+  end
+
   private
 
   def require_login
