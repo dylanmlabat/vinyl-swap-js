@@ -5,3 +5,7 @@
   <%= password_field_tag :password %><br><br>
   <%= submit_tag 'Log In' %>
 <% end %>
+
+<% if flash[:error] %>
+  <div id='error_explanation'><%= flash[:error] %></div>
+<% end %>
