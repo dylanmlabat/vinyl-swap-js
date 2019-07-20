@@ -1,4 +1,5 @@
 class AlbumsController < ApplicationController
+  before_action :require_login, only: [:new, :show, :artist]
 
   def new
     @album = Album.new

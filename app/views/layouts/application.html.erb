@@ -10,15 +10,15 @@
     <div class="wrapper">
       <%= yield %>
       <footer class="branding">
-        <%= form_tag :search do %>
-          <%= text_field_tag :search %>
-          <%= submit_tag 'Search by Artist' %>
-          <% if flash[:error] %>
-            <div id='error_explanation'><small><%= flash[:error] %></small></div>
-          <% end %>
-        <% end %><br>
-
         <% if logged_in? %>
+          <%= form_tag :search do %>
+            <%= text_field_tag :search %>
+            <%= submit_tag 'Search by Artist' %>
+            <% if flash[:error] %>
+              <div id='error_explanation'><small><%= flash[:error] %></small></div>
+            <% end %>
+          <% end %><br>
+
           Currently logged in as: <%= link_to current_user.username, user_path(current_user) %>
           <%= button_to 'Log Out', logout_path, method: :post %><br>
         <% end %>
