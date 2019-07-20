@@ -1,10 +1,14 @@
 # Vinyl Swap
 
- - Project description here
+This Rails project allows users to create a password protected account. Users may then create, edit, and delete sales listings for records they own. Users may also view other listings, user profiles, albums, and artists.
 
 ## Installation
 
- - Usage instructions here
+Fork/clone this repository and then cd to the directory in your terminal.
+
+Run `bundle install` to install the necessary gems and then `rake db:migrate` to ensure the database is created. Run `rake db:seed` if you want to import test data.
+
+Run `rails s` and then navigate to the server url in your browser.
 
 ## Contributing
 
