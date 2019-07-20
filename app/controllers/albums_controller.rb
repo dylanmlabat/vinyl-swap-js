@@ -9,7 +9,7 @@ class AlbumsController < ApplicationController
     if @album.save
       redirect_to @album
     else
-      redirect_to new_album_path
+      render :new
     end
   end
 
