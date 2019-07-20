@@ -12,7 +12,7 @@ class ListingsController < ApplicationController
     if @listing.save
       redirect_to user_listing_path(current_user, @listing)
     else
-      redirect_to new_user_listing_path(current_user, @listing)
+      render :new
     end
   end
 
@@ -25,7 +25,7 @@ class ListingsController < ApplicationController
     if @listing.update(listing_params)
       redirect_to user_listing_path(current_user, @listing)
     else
-      redirect_to edit_user_listing_path(current_user, @listing)
+      render :edit
     end
   end
 

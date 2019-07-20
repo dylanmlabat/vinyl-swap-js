@@ -3,9 +3,15 @@
 <%= f.radio_button :condition, "Near Mint" %> <small>Near Mint</small>
 <%= f.radio_button :condition, "Very Good" %> <small>Very Good</small>
 <%= f.radio_button :condition, "Good" %> <small>Good</small>
-<%= f.radio_button :condition, "Poor" %> <small>Poor</small><br><br>
+<%= f.radio_button :condition, "Poor" %> <small>Poor</small>
+<% @listing.errors[:condition].each do |error| %>
+  <div id='error_explanation'><%= inline_errors(@listing, :condition) %></div>
+<% end %><br><br>
 <%= f.label :price %>:<br>
-<%= f.number_field :price %><br><br>
+<%= f.number_field :price %>
+<% @listing.errors[:price].each do |error| %>
+  <div id='error_explanation'><%= inline_errors(@listing, :price) %></div>
+<% end %><br><br>
 <%= f.label :notes, "Additional Notes:" %><br>
 <% Listing::NOTES.each do |note| %>
   <%= f.check_box :notes, { multiple: true }, note, nil %>
