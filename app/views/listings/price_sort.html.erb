@@ -1,0 +1,9 @@
+<h2>Lowest Price Listings</h2>
+
+<% @listings.each do |listing| %>
+  <%= link_to user_listing_path(listing.user, listing) do %>
+    <%= listing.album.artist %> - <%= listing.album.title %><br>
+  <% end %>
+    <small>Sold by <%= link_to "#{listing.user.username}", user_path(listing.user) %></small><br>
+    <small><%= listing.condition %> - $<%= listing.price %></small><br><br>
+<% end %>

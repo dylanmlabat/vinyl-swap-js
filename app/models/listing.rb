@@ -8,6 +8,8 @@ class Listing < ApplicationRecord
   belongs_to :user
   belongs_to :album
 
+  scope :listing_low_to_high, -> { order(:price) }
+
   NOTES = [
     'Sealed', '1st Pressing', 'Colored Vinyl', 'Picture Disc',
     'Limited Run', 'Promotional Release', 'Import'

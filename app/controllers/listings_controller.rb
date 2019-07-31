@@ -41,6 +41,10 @@ class ListingsController < ApplicationController
     end
   end
 
+  def price_sort
+    @listings = Listing.listing_low_to_high
+  end
+
   private
 
   def listing_params

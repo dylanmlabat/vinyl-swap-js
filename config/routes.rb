@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   post '/logout', to: 'sessions#destroy'
   get '/search', to: 'application#search'
   post '/search', to: 'application#result'
+  get '/price_sort', to: 'listings#price_sort'
 
   resources :users do
     resources :listings, only: [:new, :edit, :show, :destroy]
