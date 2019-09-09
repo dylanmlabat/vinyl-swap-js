@@ -1,4 +1,4 @@
-# Vinyl Swap
+# Vinyl Swap JS
 
 This Rails project allows users to create a password protected account. Users may then create, edit, and delete sales listings for records they own. Users may also view other listings, user profiles, albums, and artists.
 
