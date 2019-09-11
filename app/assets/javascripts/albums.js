@@ -1,6 +1,18 @@
 $(function(){
   console.log('albums.js is loaded...')
+  getAlbums()
 })
+
+function getAlbums(){
+  $.ajax({
+    url: 'http://localhost:3000/albums',
+    method: 'get',
+    dataType: 'json'
+  }).done(function(data){
+    console.log('the data is: ', data)
+    debugger
+  })
+}
 
 class Album {
   constructor(album){
