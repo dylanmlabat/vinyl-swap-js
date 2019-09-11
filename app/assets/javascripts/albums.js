@@ -10,7 +10,6 @@ function getAlbums(){
     dataType: 'json'
   }).done(function(data){
     console.log('the data is: ', data)
-    debugger
   })
 }
 
