@@ -1,14 +1,6 @@
 class AlbumsController < ApplicationController
   before_action :require_login, only: [:new, :show, :artist]
 
-  def index
-    @albums = Album.all
-    respond_to do |f|
-      f.html {render :index}
-      f.json {render json: @albums}
-    end
-  end
-
   def new
     @album = Album.new
   end

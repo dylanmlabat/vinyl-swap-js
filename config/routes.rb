@@ -17,6 +17,6 @@ Rails.application.routes.draw do
   resources :albums do
     get 'by_artist/:artist' => :artist, on: :collection
   end
-  resources :listings, only: [:create, :update]
+  resources :listings, only: [:index, :create, :update]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

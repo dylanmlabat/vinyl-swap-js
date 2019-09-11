@@ -2,6 +2,14 @@ class ListingsController < ApplicationController
   include ListingsHelper
   before_action :require_permission, only: [:edit]
 
+  def index
+    @listings = Listing.all
+    respond_to do |f|
+      f.html {render :index}
+      f.json {render json: @listings}
+    end
+  end
+
   def new
     @listing = Listing.new
   end
