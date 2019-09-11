@@ -1,7 +1,14 @@
 $(function(){
   console.log('albums.js is loaded...')
-  getAlbums()
+  listenForClick()
 })
+
+function listenForClick(){
+  $('button#recent-listings').on('click', function(event){
+    event.preventDefault()
+    getAlbums()
+  })
+}
 
 function getAlbums(){
   $.ajax({
@@ -10,6 +17,7 @@ function getAlbums(){
     dataType: 'json'
   }).done(function(data){
     console.log('the data is: ', data)
+    debugger
   })
 }
 
