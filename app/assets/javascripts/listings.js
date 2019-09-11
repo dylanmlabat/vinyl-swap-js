@@ -1,14 +1,7 @@
 $(function(){
   console.log('listings.js is loaded...')
-  listenForClick()
+  getListings()
 })
-
-function listenForClick(){
-  $('button#recent-listings').on('click', function(event){
-    event.preventDefault()
-    getListings()
-  })
-}
 
 function getListings(){
   $.ajax({
@@ -16,10 +9,19 @@ function getListings(){
     method: 'get',
     dataType: 'json'
   }).done(function(data){
-    console.log('the data is: ', data)
-    let testlisting = new Listing(data[0])
-    let myListingHTML = testlisting.listingHTML()
-    debugger
+    let recentListings = data.reverse()
+    let startIndex = 5
+
+    $('button#more-listings').on('click', function(event){
+      event.preventDefault()
+      for (i = 0; i < 5; i++){
+        if (startIndex === recentListings.length){break}
+        let listing = new Listing(recentListings[startIndex])
+        let listingHTML = listing.listingHTML()
+        document.getElementById('recent-listings').innerHTML += listingHTML
+        startIndex++
+      }
+    })
   })
 }
 
@@ -36,10 +38,10 @@ class Listing {
   }
 }
 
-Listing.prototype.listingHTML = function() {
+Listing.prototype.listingHTML = function(){
   return (`
     ${this.album.artist} - ${this.album.title}<br>
     <small>Sold by ${this.user.username}</small><br>
-    <small>${this.condition} - $${this.price}</small>
+    <small>${this.condition} - $${this.price}</small><br><br>
   `)
 }
