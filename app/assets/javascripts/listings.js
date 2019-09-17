@@ -40,8 +40,8 @@ class Listing {
 
 Listing.prototype.listingHTML = function(){
   return (`
-    ${this.album.artist} - ${this.album.title}<br>
-    <small>Sold by ${this.user.username}</small><br>
+    <a href="/users/${this.user.id}/listings/${this.id}">${this.album.artist} - ${this.album.title}</a><br>
+    <small>Sold by <a href="/users/${this.user.id}">${this.user.username}</a></small><br>
     <small>${this.condition} - $${this.price}</small><br><br>
   `)
 }
