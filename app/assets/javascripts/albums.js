@@ -4,7 +4,7 @@ $(function(){
 })
 
 function getAlbum(){
-  url = window.location.href
+  let url = window.location.href
   $.ajax({
     url: url,
     method: 'get',

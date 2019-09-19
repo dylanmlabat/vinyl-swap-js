@@ -4,14 +4,17 @@ $(function(){
 })
 
 function getUser(){
-  url = window.location.href
+  let url = window.location.href
   $.ajax({
     url: url,
     method: 'get',
     dataType: 'json'
   }).done(function(data){
-    console.log('the data is: ', data)
-    debugger
+    let user = new User(data)
+    for (i = 0; i < user.listings.length; i++){
+      let listing = new Listing(user.listings[i])
+      debugger
+    }
   })
 }
 
@@ -21,5 +24,6 @@ class User {
     this.username = user.username
     this.email = user.email
     this.listings = user.listings
+    this.albums = user.albums
   }
 }
