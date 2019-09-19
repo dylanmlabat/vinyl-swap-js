@@ -30,7 +30,7 @@ class Album {
 
 Album.prototype.albumHTML = function(){
   return (`
-    <h2>${this.artist} - ${this.title}</h2>
+    <h2><a href="/albums/by_artist/${this.artist.toLowerCase().replace(/[^a-z0-9]/g,'-')}">${this.artist}</a> - ${this.title}</h2>
     <b>Released:</b> ${this.release_year}<br>
     <b>Genre:</b> ${this.genre}<br><br>
 
