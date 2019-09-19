@@ -10,8 +10,9 @@ function getAlbum(){
     method: 'get',
     dataType: 'json'
   }).done(function(data){
-    console.log('the data is: ', data)
-    debugger
+    let album = new Album(data)
+    let albumHTML = album.albumHTML()
+    document.getElementById('show-album').innerHTML += albumHTML
   })
 }
 
@@ -25,4 +26,14 @@ class Album {
     this.listings = album.listings
     this.users = album.users
   }
+}
+
+Album.prototype.albumHTML = function(){
+  return (`
+    <h2>${this.artist} - ${this.title}</h2>
+    <b>Released:</b> ${this.release_year}<br>
+    <b>Genre:</b> ${this.genre}<br><br>
+
+    <h3>Copies for sale:</h3><br>
+  `)
 }
