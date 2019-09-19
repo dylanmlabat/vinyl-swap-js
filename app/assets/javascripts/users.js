@@ -1,9 +1,9 @@
 $(function(){
   console.log('users.js is loaded...')
-  getAlbum()
+  getUser()
 })
 
-function getAlbum(){
+function getUser(){
   url = window.location.href
   $.ajax({
     url: url,
