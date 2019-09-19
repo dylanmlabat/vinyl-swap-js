@@ -17,6 +17,10 @@ class AlbumsController < ApplicationController
   def show
     @album = Album.find(params[:id])
     @listings = @album.listings
+    respond_to do |f|
+      f.html {render :show}
+      f.json {render json: @album}
+    end
   end
 
   def artist
