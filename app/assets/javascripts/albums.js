@@ -18,7 +18,7 @@ function getAlbum(){
 }
 
 function listenForNewAlbumFormClick(){
-  $('a#new-album-form').on('click', function(event){
+  $('a#new-album-form-btn').on('click', function(event){
     event.preventDefault()
     let newAlbumForm = Album.newAlbumForm()
     document.getElementById('new-album-form-div').innerHTML += newAlbumForm
@@ -27,7 +27,11 @@ function listenForNewAlbumFormClick(){
 }
 
 function openForm(){
-  document.getElementById('album-form').style.display = "block"
+  document.getElementById('album-form-popup').style.display = 'block'
+}
+
+function closeForm(){
+  document.getElementById('album-form-popup').style.display = 'none'
 }
 
 class Album {
@@ -43,7 +47,7 @@ class Album {
 
   static newAlbumForm(){
     return (`
-      <div class='form-popup' id='album-form'>
+      <div class='form-popup' id='album-form-popup'>
         <h2>Add Album to Database</h2>
         <form><p>
           <label>Artist:</label><br>
@@ -54,7 +58,7 @@ class Album {
           <input type='text' name='release_year'><br><br>
           <label>Genre:</label><br>
           <input type='text' name='genre'><br><br>
-          <input type='submit' value='Create Album'>
+          <input type='submit' onclick='event.preventDefault(); closeForm();' value='Create Album'>
         </form>
       </div>
     `)
