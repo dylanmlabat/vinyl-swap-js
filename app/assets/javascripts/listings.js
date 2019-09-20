@@ -45,3 +45,9 @@ Listing.prototype.listingHTML = function(){
     <small>${this.condition} - $${this.price}</small><br><br>
   `)
 }
+
+Listing.prototype.userListingHTML = function(){
+  return (`
+    <small>${this.condition} - $${this.price}</small><br><br>
+  `)
+}

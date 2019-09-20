@@ -5,7 +5,7 @@
 <% end %>
 
 <h2>Records for sale:</h2>
-<%= render 'listings/listings' %>
+<div class="margin" id="user-listings"></div>
 
 <% if @user == current_user %>
   <%= button_to 'Add New Listing', new_user_listing_path(@user), method: :get %>
