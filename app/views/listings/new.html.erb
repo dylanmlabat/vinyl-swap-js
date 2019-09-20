@@ -7,7 +7,7 @@
     <div id='error_explanation'><%= inline_errors(@listing, :album_id) %></div>
   <% end %><br>
   <small><a id="new-album-form" href="#">or add a new album to database first</a></small>
-  <div id="new-album-form-div"></div><br><br>
+  <div id="new-album-form-div"></div><br>
   <%= render partial: 'form', locals: { :f => f} %>
   <%= f.submit 'Create Listing' %>
 <% end %>

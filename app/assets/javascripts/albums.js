@@ -22,7 +22,12 @@ function listenForNewAlbumFormClick(){
     event.preventDefault()
     let newAlbumForm = Album.newAlbumForm()
     document.getElementById('new-album-form-div').innerHTML += newAlbumForm
+    openForm()
   })
+}
+
+function openForm(){
+  document.getElementById('album-form').style.display = "block"
 }
 
 class Album {
@@ -38,18 +43,20 @@ class Album {
 
   static newAlbumForm(){
     return (`
-      <strong>Add Album to Database</strong>
-      <form><p>
-        <label>Artist:</label><br>
-        <input type='text' name='artist'><br><br>
-        <label>Title:</label><br>
-        <input type='text' name='title'><br><br>
-        <label>Release Year:</label><br>
-        <input type='text' name='release_year'><br><br>
-        <label>Genre:</label><br>
-        <input type='text' name='genre'><br><br>
-        <input type='submit' value='Create Album'>
-      </form>
+      <div class='form-popup' id='album-form'>
+        <h2>Add Album to Database</h2>
+        <form><p>
+          <label>Artist:</label><br>
+          <input type='text' name='artist'><br><br>
+          <label>Title:</label><br>
+          <input type='text' name='title'><br><br>
+          <label>Release Year:</label><br>
+          <input type='text' name='release_year'><br><br>
+          <label>Genre:</label><br>
+          <input type='text' name='genre'><br><br>
+          <input type='submit' value='Create Album'>
+        </form>
+      </div>
     `)
   }
 }
