@@ -1,6 +1,7 @@
 $(function(){
   console.log('albums.js is loaded...')
   getAlbum()
+  listenForNewAlbumFormClick()
 })
 
 function getAlbum(){
@@ -16,6 +17,14 @@ function getAlbum(){
   })
 }
 
+function listenForNewAlbumFormClick(){
+  $('a#new-album-form').on('click', function(event){
+    event.preventDefault()
+    let newAlbumForm = Album.newAlbumForm()
+    document.getElementById('new-album-form-div').innerHTML += newAlbumForm
+  })
+}
+
 class Album {
   constructor(album){
     this.id = album.id
@@ -25,6 +34,23 @@ class Album {
     this.genre = album.genre
     this.listings = album.listings
     this.users = album.users
+  }
+
+  static newAlbumForm(){
+    return (`
+      <strong>Add Album to Database</strong>
+      <form><p>
+        <label>Artist:</label><br>
+        <input type='text' name='artist'><br><br>
+        <label>Title:</label><br>
+        <input type='text' name='title'><br><br>
+        <label>Release Year:</label><br>
+        <input type='text' name='release_year'><br><br>
+        <label>Genre:</label><br>
+        <input type='text' name='genre'><br><br>
+        <input type='submit' value='Create Album'>
+      </form>
+    `)
   }
 }
 
