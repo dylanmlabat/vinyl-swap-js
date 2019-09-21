@@ -26,13 +26,14 @@ function listenForNewAlbumFormClick(){
     $(function(){
       $('form#album-form').submit(function(event) {
         event.preventDefault()
-        var valuehash = {
-          artist: this[0].value,
-          title: this[1].value,
-          release_year: this[2].value,
-          genre: this[3].value
+        var albumArtist = document.getElementById('album-artist').innerHTML
+        var valueHash = {
+          artist: albumArtist,
+          title: this[0].value,
+          release_year: this[1].value,
+          genre: this[2].value
         }
-        var album = {album: valuehash}
+        var album = {album: valueHash}
         var posting = $.post('/albums', album)
         posting.done(function(data){
           $("#artist-albums").load(" #artist-albums")
@@ -58,8 +59,6 @@ class Album {
   static newAlbumForm(){
     return (`
         <br><form id='album-form'>
-          <label>Artist:</label><br>
-          <input type='text' name='artist'><br><br>
           <label>Title:</label><br>
           <input type='text' name='title'><br><br>
           <label>Release Year:</label><br>
