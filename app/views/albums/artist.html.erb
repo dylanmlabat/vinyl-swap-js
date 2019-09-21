@@ -1,10 +1,10 @@
 <center><h1><%= @artist %></h1></center>
 
 <p><h2>Albums:</h2>
-<p><div id="artist-albums" class="margin"><% @artist_albums.each do |album| %>
+<p><div class="margin"><div id="artist-albums"><% @artist_albums.each do |album| %>
   <h3><%= link_to album.title, album_path(album) %></h3>
   <small>Released: <%= album.release_year %></small><br><br>
-<% end %></div>
+<% end %></div></div>
 
 <button id='new-album-form-btn'>Add New Album</button>
 <div id="new-album-form"></div>
