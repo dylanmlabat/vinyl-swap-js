@@ -8,7 +8,7 @@ class AlbumsController < ApplicationController
   def create
     @album = Album.new(album_params)
     if @album.save
-      render json: @album
+      redirect_to new_user_listing_path(current_user)
     else
       render :new
     end
@@ -36,7 +36,7 @@ class AlbumsController < ApplicationController
   private
 
   def album_params
-    params.permit(:album, :artist, :title, :release_year, :genre)
+    params.require(:album).permit(:artist, :title, :release_year, :genre)
   end
 
 end

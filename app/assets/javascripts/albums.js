@@ -26,10 +26,15 @@ function listenForNewAlbumFormClick(){
     $(function(){
       $('form#album-form').submit(function(event) {
         event.preventDefault()
-        var values = $(this).serialize()
-        var posting = $.post('/albums', values)
+        var valuehash = {
+          artist: this[0].value,
+          title: this[1].value,
+          release_year: this[2].value,
+          genre: this[3].value
+        }
+        var album = {album: valuehash}
+        var posting = $.post('/albums', album)
         posting.done(function(data){
-          var album = data
           $("#artist-albums").load(" #artist-albums")
           document.getElementById('new-album-form').innerHTML = ''
           document.getElementById('new-album-form-btn').disabled = false
