@@ -18,20 +18,22 @@ function getAlbum(){
 }
 
 function listenForNewAlbumFormClick(){
-  $('a#new-album-form-btn').on('click', function(event){
+  $('button#new-album-form-btn').on('click', function(event){
     event.preventDefault()
+    document.getElementById('new-album-form-btn').disabled = true
     let newAlbumForm = Album.newAlbumForm()
-    document.getElementById('new-album-form-div').innerHTML += newAlbumForm
-    openForm()
+    document.getElementById('new-album-form').innerHTML += newAlbumForm
+    $(function(){
+      $('form#album-form').submit(function(event) {
+        event.preventDefault()
+        var values = $(this).serialize()
+        var posting = $.post('/albums', values)
+        posting.done(function(data){
+          var album = data
+        })
+      })
+    })
   })
-}
-
-function openForm(){
-  document.getElementById('album-form-popup').style.display = 'block'
-}
-
-function closeForm(){
-  document.getElementById('album-form-popup').style.display = 'none'
 }
 
 class Album {
@@ -47,9 +49,7 @@ class Album {
 
   static newAlbumForm(){
     return (`
-      <div class='form-popup' id='album-form-popup'>
-        <h2>Add Album to Database</h2>
-        <form><p>
+        <br><form id='album-form'>
           <label>Artist:</label><br>
           <input type='text' name='artist'><br><br>
           <label>Title:</label><br>
@@ -58,9 +58,8 @@ class Album {
           <input type='text' name='release_year'><br><br>
           <label>Genre:</label><br>
           <input type='text' name='genre'><br><br>
-          <input type='submit' onclick='event.preventDefault(); closeForm();' value='Create Album'>
+          <input type='submit' value='Create Album'>
         </form>
-      </div>
     `)
   }
 }
