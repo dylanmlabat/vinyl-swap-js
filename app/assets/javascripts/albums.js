@@ -30,6 +30,10 @@ function listenForNewAlbumFormClick(){
         var posting = $.post('/albums', values)
         posting.done(function(data){
           var album = data
+          $("#albumTitle").html(`<a href="/albums/${album['id']}">${album['title']}</a>`)
+          $("#albumYear").html(`Released: ${album['release_year']}`)
+          document.getElementById('new-album-form').innerHTML = ''
+          document.getElementById('new-album-form-btn').disabled = false
         })
       })
     })
