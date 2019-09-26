@@ -6,6 +6,7 @@
 
 <h2>Records for sale:</h2>
 <div class="margin" id="user-listings"></div>
+<button id='sort-price-btn'>Sort Low to High</button>
 
 <% if @user == current_user %>
   <%= button_to 'Add New Listing', new_user_listing_path(@user), method: :get %>

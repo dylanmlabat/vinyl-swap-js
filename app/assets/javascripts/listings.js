@@ -25,6 +25,33 @@ function getListings(){
   })
 }
 
+function getUser(){
+  let url = window.location.href
+  $.ajax({
+    url: url,
+    method: 'get',
+    dataType: 'json'
+  }).done(function(data){
+    var listings = data
+    $('button#sort-price-btn').on('click', function(event){
+      event.preventDefault()
+      document.getElementById('user-listings').innerHTML = ''
+      let listingSort = listings.sort(function(a, b) {return a.price - b.price})
+      for (i = 0; 1 < listingSort.length; i++){
+        let listing = new Listing(listingSort[i])
+        let userListingHTML = listing.userListingHTML()
+        document.getElementById('user-listings').innerHTML += userListingHTML
+      }
+    })
+
+    for (i = 0; 1 < listings.length; i++){
+      let listing = new Listing(listings[i])
+      let userListingHTML = listing.userListingHTML()
+      document.getElementById('user-listings').innerHTML += userListingHTML
+    }
+  })
+}
+
 class Listing {
   constructor(listing){
     this.id = listing.id
@@ -48,6 +75,7 @@ Listing.prototype.listingHTML = function(){
 
 Listing.prototype.userListingHTML = function(){
   return (`
+    <a href="/users/${this.user.id}/listings/${this.id}">${this.album.artist} - ${this.album.title}</a><br>
     <small>${this.condition} - $${this.price}</small><br><br>
   `)
 }

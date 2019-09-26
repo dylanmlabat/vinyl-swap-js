@@ -20,7 +20,7 @@ class UsersController < ApplicationController
     @listings = @user.listings
     respond_to do |f|
       f.html {render :show}
-      f.json {render json: @user}
+      f.json {render json: @listings}
     end
   end
 
